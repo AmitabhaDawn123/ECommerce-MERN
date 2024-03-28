@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 dotenv.config({ path: "server/config/config.env" });
 
-app.get('/cart', (req, res) => {
+app.get('/', (req, res) => {
     res.send('I Love You Babu')
   })
 

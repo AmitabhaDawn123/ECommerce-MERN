@@ -4,6 +4,8 @@ import express from "express"
 import connectionDb from "./config/connection.js";
 import morgan from "morgan"
 import productRoute from "./routes/products.js"
+import userRoute from "./routes/users.js"
+import cookieParser from "cookie-parser"
 
 
 
@@ -28,9 +30,10 @@ app.use(morgan('dev'))
 //     res.send('I Love You Babu')
 //   })
 app.use(express.json());
-
+app.use(cookieParser());
   //routing for products
   app.use("/api",productRoute)
+  app.use("/api",userRoute)
 
 
 

@@ -9,6 +9,7 @@ import user from "./models/user.js";
 import cookie from "./utils/cookie.js";
 import cookieParser from "cookie-parser"
 import profileRoute from "./routes/profile.js"
+import orderRoute from "./routes/order.js"
 
 
 
@@ -33,6 +34,8 @@ app.use(cookieParser());
   app.use("/api",userRoute)
 
   app.use("/api",profileRoute)
+
+  app.use("/api",orderRoute)
 
 
   //express Listening

@@ -6,18 +6,15 @@ import ApiFilter from "../utils/apiFilters.js"
 
 
 
-
-
 //create a new single products
 //api/admin/products
  export const createProduct= asyncHandler(async(req,res)=>{
     try{
-       
-
     if (req.body.name)
     {
         req.body.slug = slug(req.body.name)
     }
+    req.body.user = req.user._id
 
     const newProduct = await Product.create(req.body)
     res.status(200).json({
@@ -66,7 +63,6 @@ export const getProducts= asyncHandler(async(req,res)=>{
         throw new Error(err);
     }
 })
-
 
 //get single product details with :id
 //api/allproducts/:id
@@ -167,7 +163,7 @@ if (validate)
         product =await Product.findByIdAndDelete(req.params.id,{new:true})
 
         res.status(200).json({
-            message:"Product Deleted"
+            message: "Product Deleted"
         })
     }
 }

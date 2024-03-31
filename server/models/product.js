@@ -1,8 +1,8 @@
-import mongoose  from "mongoose";
+import mongoose, { Schema }  from "mongoose";
 
 const productSchema= new mongoose.Schema(
     {
-        name: {
+              name: {
             type: String,
             required: true,
             trim: true,
@@ -91,7 +91,7 @@ const productSchema= new mongoose.Schema(
           user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
-            required: false,
+            required: true,
           },
          
     },

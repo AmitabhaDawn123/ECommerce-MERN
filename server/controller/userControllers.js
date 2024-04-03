@@ -61,15 +61,23 @@ export const loginUser = asyncHandler(async(req,res,next) => {
     }
 
         const user = await User.findOne({email}).select("+password")
-        const token = await user.getJwtToken();
-
         if(!user)
         {
             res.status(401).json({
-                error: "User not found. Check Email and Password"
+                error: "Check Email and Password"
             })
 
         }
+        const token = await user.getJwtToken();
+        // if(!token){
+        //     res.status(401).json({
+        //         error: "User not found. Check Email and Password"
+        //     })
+
+
+       // }
+
+       
 
         const isMatched = await user.comparePassword(password)
         if(!isMatched){

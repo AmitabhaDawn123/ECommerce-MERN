@@ -5,11 +5,15 @@ reducerPath: "productApi",
 baseQuery:fetchBaseQuery({baseUrl:"/api"}),
 endpoints: (builder)=> ({
 getProducts: builder.query({
-    query:(params)=>({
+    query:(_)=>({
        url: "/allproducts",
-    })
-})
+    }),
+}),
+getProductDetails: builder.query({
+    query: (id) => `/allproducts/${id}`,
+  }),
 })
 })
 
-export const {useGetProductsQuery} =productApi
+export const {useGetProductsQuery , useGetProductDetailsQuery} =productApi
+
